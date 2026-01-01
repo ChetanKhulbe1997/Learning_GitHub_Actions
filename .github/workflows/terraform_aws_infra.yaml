@@ -1,3 +1,4 @@
+# GitHub Actions workflow to deploy AWS infrastructure using Terraform with OIDC authentication
 on:
   push:
     branches:
