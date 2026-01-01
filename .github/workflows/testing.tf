@@ -10,16 +10,3 @@ terraform {
 provider "aws" {
   region = "ap-south-1"
 }
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-unique-bucket-name-1234567890"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
-
-resource "aws_s3_bucket_acl" "my_bucket_acl" {
-  bucket = aws_s3_bucket.my_bucket.id
-  acl    = "private"
-}
