@@ -43,4 +43,3 @@ jobs:
         run: terraform apply -auto-approve -input=false
         # If using a saved plan:
         # run: terraform apply -auto-approve tfplan
-        
