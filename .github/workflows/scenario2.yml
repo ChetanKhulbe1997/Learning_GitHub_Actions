@@ -28,11 +28,18 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.STAGING_SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.STAGING_HOST }} >> ~/.ssh/known_hosts
+
+          cat <<EOF > ~/.ssh/config
+          Host staging
+            HostName ${{ secrets.STAGING_HOST }}
+            User ${{ secrets.STAGING_USER }}
+            IdentityFile ~/.ssh/id_ed25519
+            StrictHostKeyChecking no
+          EOF
 
       - name: Deploy to Staging
         run: |
-          ssh ${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }} << 'EOF'
+          ssh staging << 'EOF'
             cd /Learning_GitHub_Actions
             git pull origin develop
             npm install
