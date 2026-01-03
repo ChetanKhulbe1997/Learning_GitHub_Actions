@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to Staging
         run: |
           ssh ${{ secrets.STAGING_USER }}@${{ secrets.STAGING_HOST }} << 'EOF'
-            cd /app
+            cd /Learning_GitHub_Actions
             git pull origin develop
             npm install
             pm2 restart app
