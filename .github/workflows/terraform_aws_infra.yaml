@@ -2,11 +2,11 @@
 on:
   push:
     branches:
-      - dev
       - main
+      - dev
   pull_request:
 
-jobs:
+jobs:                         # Define the jobs for the workflow
   terraform:
     runs-on: ubuntu-latest
     permissions:
@@ -43,4 +43,3 @@ jobs:
         run: terraform apply -auto-approve -input=false
         # If using a saved plan:
         # run: terraform apply -auto-approve tfplan
-        
