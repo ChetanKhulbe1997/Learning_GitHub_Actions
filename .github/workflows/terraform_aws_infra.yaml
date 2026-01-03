@@ -6,7 +6,7 @@ on:
       - dev
   pull_request:
 
-jobs:
+jobs:                         # Define the jobs for the workflow
   terraform:
     runs-on: ubuntu-latest
     permissions:
